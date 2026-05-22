@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AMA · LA Ops Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body>
+<nav class="topnav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html"><span class="logo-pill">LA</span> Ops Hub</a>
+    <div class="nav-links">
+      <a href="report.html">Weekly report</a>
+      <a href="prompts.html">Prompt library</a>
+      <a href="wiki.html">Wiki</a>
+      <a href="links.html">Links</a>
+      <a href="ama.html" class="active">AMA</a>
+      <a href="blueprism.html">Blue Prism</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>Ask me anything</h1>
+  <p>Got a question about processes, tools, or how things work? Ask it here. Answered questions become part of the wiki.</p>
+</div>
+
+<div class="page-content">
+
+  <div class="ama-form">
+    <h2>Ask a question</h2>
+    <div class="form-row">
+      <label>Your question</label>
+      <textarea id="q-text" placeholder="e.g. What do I do if the UAT data isn't ready on time? How do I request L6P access?"></textarea>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="form-row">
+        <label>Your name (optional)</label>
+        <input id="q-name" type="text" placeholder="First name or anonymous"/>
+      </div>
+      <div class="form-row">
+        <label>Category</label>
+        <select id="q-cat">
+          <option>Process / SOP</option>
+          <option>Tools & access</option>
+          <option>JIRA</option>
+          <option>SharePoint</option>
+          <option>MS Copilot</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink3);margin-bottom:12px">Questions are submitted as a GitHub issue and answered by the Ops team. Answers appear here once resolved.</p>
+    <button class="btn-primary" onclick="submitQuestion()">Submit question →</button>
+    <span id="submit-confirm" style="display:none;font-size:13px;color:var(--green);margin-left:12px">✓ Question submitted!</span>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:10px">
+    <h2 style="font-family:var(--serif);font-size:20px;font-weight:700">Answered questions</h2>
+    <div style="display:flex;gap:6px;flex-wrap:wrap" id="ama-chips">
+      <button class="chip active" data-cat="all">All</button>
+      <button class="chip" data-cat="Process / SOP">Process</button>
+      <button class="chip" data-cat="Tools & access">Tools</button>
+      <button class="chip" data-cat="MS Copilot">Copilot</button>
+      <button class="chip" data-cat="JIRA">JIRA</button>
+    </div>
+  </div>
+
+  <div class="qa-list" id="qa-list"></div>
+</div>
+
+<footer class="footer">
+  <p>LA Ops Hub · Built by Ops team · <a href="https://github.com" target="_blank">View on GitHub</a></p>
+</footer>
+
+<script>
+const qas = [
+  {
+    q: "What happens if the UAT data isn't ready on time?",
+    a: "If data isn't available by the agreed UAT start date, the timeline shifts and a new CPS is issued. Escalate to Sofia R. immediately — she can coordinate with the data team. Don't start UAT with incomplete data; partial testing creates more problems than a short delay.",
+    cat: "Process / SOP",
+    date: "May 12, 2025",
+    author: "Anonymous"
+  },
+  {
+    q: "How do I get access to the L6P environment?",
+    a: "Submit a request to Diego Herrera (DevOps team) via Teams or JIRA. Include your role, the project name, and what level of access you need (read vs write). Turnaround is usually 1–2 business days. L6P access is project-specific so you'll need to re-request for each new project.",
+    cat: "Tools & access",
+    date: "May 8, 2025",
+    author: "Valentina C."
+  },
+  {
+    q: "Can I use MS Copilot to summarize a JIRA board?",
+    a: "Not directly from JIRA yet, but the workaround is solid: export your JIRA sprint to Excel or copy the board view, then paste it into Copilot Chat and ask it to summarize. Check the Prompt Library for the exact prompt — search 'data reality check' for the best one.",
+    cat: "MS Copilot",
+    date: "May 6, 2025",
+    author: "Andrés M."
+  },
+  {
+    q: "Who approves UAT before we can go to production?",
+    a: "The business stakeholder named in the project kickoff email. This is always @Marin, Sofia for the LA team projects unless otherwise stated. Approval must be in writing — a Teams message or email is fine. Save it in the project SharePoint folder before proceeding.",
+    cat: "Process / SOP",
+    date: "April 29, 2025",
+    author: "Anonymous"
+  },
+  {
+    q: "How do I add a new team member to the JIRA board?",
+    a: "Go to Project Settings → People → Add member → enter their email. They need an Atlassian account (same as their work email). If they don't have access yet, they'll get an invite automatically. For external contributors, flag with Andrés M. first as it requires a guest license.",
+    cat: "JIRA",
+    date: "April 22, 2025",
+    author: "Diego H."
+  }
+];
+
+let activeFilter = 'all';
+
+function renderQAs() {
+  const filtered = activeFilter === 'all' ? qas : qas.filter(q => q.cat === activeFilter);
+  document.getElementById('qa-list').innerHTML = filtered.length ? filtered.map(q => `
+    <div class="qa-card">
+      <div class="qa-q">${q.q}</div>
+      <div class="qa-a">${q.a}</div>
+      <div class="qa-meta">${q.cat} · ${q.date} · answered by ${q.author}</div>
+    </div>`).join('') : '<p style="color:var(--ink3);font-size:14px">No questions in this category yet.</p>';
+}
+
+document.getElementById('ama-chips').addEventListener('click', e => {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  document.querySelectorAll('#ama-chips .chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  activeFilter = chip.dataset.cat;
+  renderQAs();
+});
+
+function submitQuestion() {
+  const q = document.getElementById('q-text').value.trim();
+  if (!q) return;
+  const name = document.getElementById('q-name').value.trim() || 'Anonymous';
+  const cat = document.getElementById('q-cat').value;
+  const issueTitle = encodeURIComponent(`[AMA] ${q.substring(0, 60)}`);
+  const issueBody = encodeURIComponent(`**Question:** ${q}\n\n**Category:** ${cat}\n**From:** ${name}\n\n---\n*Submitted via LA Ops Hub AMA*`);
+  window.open(`https://github.com/YOUR_USERNAME/la-ops-hub/issues/new?title=${issueTitle}&body=${issueBody}&labels=ama`, '_blank');
+  document.getElementById('q-text').value = '';
+  document.getElementById('submit-confirm').style.display = 'inline';
+  setTimeout(() => { document.getElementById('submit-confirm').style.display = 'none'; }, 4000);
+}
+
+renderQAs();
+</script>
+</body>
+</html>
