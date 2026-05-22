@@ -1,8 +1,8 @@
-# 🌎 LA Ops Hub
+# LA Ops Hub
 
-A free internal platform for the Ops Hub teams — automated reports, prompt library, SOPs, useful links, and AMA. Hosted on GitHub Pages, automated with GitHub Actions.
+A free internal platform for the Ops Hub teams, automated reports, prompt library, SOPs, useful links, and AMA. Hosted on GitHub Pages, automated with GitHub Actions.
 
-## 🚀 Deploy in 5 minutes
+## Deploy in 5 minutes
 
 ### Step 1 — Fork this repo
 Click **Fork** (top right on GitHub). Name it `la-ops-hub`.
@@ -32,7 +32,7 @@ Add these secrets:
 
 The report updates every Monday at 9am automatically after that.
 
-## 📁 File structure
+## File structure
 
 ```
 la-ops-hub/
@@ -51,7 +51,7 @@ la-ops-hub/
     └── weekly-report.yml   ← GitHub Actions schedule
 ```
 
-## ✏️ How to update content
+## How to update content
 
 Everything is just files — edit directly on GitHub (click the file, click the pencil ✏️).
 
@@ -63,7 +63,7 @@ Everything is just files — edit directly on GitHub (click the file, click the 
 | Prompt library | `prompts.html` (edit the `prompts` array) |
 | Report data (manual) | `data/report.json` |
 
-## 🤖 How the auto-report works
+## How the auto-report works
 
 Every Monday at 9am, GitHub Actions:
 1. Spins up a free virtual machine
@@ -75,7 +75,7 @@ Every Monday at 9am, GitHub Actions:
 
 **Cost: $0.** GitHub Actions free tier = 2,000 min/month. Each run ≈ 2 min. Weekly = ~8 min/month.
 
-## 🔗 SharePoint integration setup
+## SharePoint integration setup
 
 1. Go to [Azure Portal](https://portal.azure.com) → App registrations → New registration
 2. Name it `la-ops-hub`, single tenant
@@ -87,4 +87,4 @@ Every Monday at 9am, GitHub Actions:
 6. Add all values as GitHub secrets (see Step 3 above)
 
 ---
-Built during training session · Costa Rica 2025 · Powered by GitHub Pages 🇨🇷
+Costa Rica 2025 · Powered by GitHub Pages 🇨🇷
