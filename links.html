@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Useful Links · LA Ops Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #111110;
+  --ink2: #4A4844;
+  --ink3: #9A9793;
+  --bg: #F7F5F0;
+  --card: #FFFFFF;
+  --line: #E8E4DC;
+  --accent: #0052CC;
+  --accent-bg: #EEF4FF;
+  --accent-dark: #003D99;
+  --green: #1B6B3A;
+  --green-bg: #E8F5EE;
+  --amber: #7A5000;
+  --amber-bg: #FFF8E6;
+  --serif: 'Syne', sans-serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --r: 12px;
+  --shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+}
+
+body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+
+/* NAV */
+.topnav { background: var(--ink); position: sticky; top: 0; z-index: 100; }
+.nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; height: 56px; display: flex; align-items: center; gap: 2rem; }
+.nav-logo { display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; font-family: var(--serif); font-size: 17px; font-weight: 700; letter-spacing: -0.3px; }
+.logo-pill { background: #FF4D2E; color: white; font-size: 12px; font-weight: 800; padding: 2px 8px; border-radius: 6px; }
+.nav-links { display: flex; gap: 0; margin-left: auto; }
+.nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 13px; padding: 0 14px; height: 56px; display: flex; align-items: center; transition: color 0.15s; border-bottom: 2px solid transparent; }
+.nav-links a:hover { color: white; }
+.nav-links a.active { color: white; border-bottom-color: #FF4D2E; }
+
+/* HERO */
+.hero { padding: 5rem 2rem 4rem; text-align: center; }
+.hero-inner { max-width: 600px; margin: 0 auto; }
+.eyebrow { font-size: 12px; font-weight: 500; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
+.hero h1 { font-family: var(--serif); font-size: 56px; font-weight: 800; color: var(--ink); letter-spacing: -2px; line-height: 1; margin-bottom: 1rem; }
+.hero-sub { font-size: 17px; color: var(--ink2); line-height: 1.65; margin-bottom: 2rem; }
+.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* BUTTONS */
+.btn-primary { background: var(--accent); color: white; text-decoration: none; padding: 11px 24px; border-radius: 8px; font-family: var(--sans); font-size: 14px; font-weight: 500; transition: opacity 0.15s; display: inline-flex; align-items: center; gap: 6px; border: none; cursor: pointer; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-ghost { background: transparent; color: var(--ink2); text-decoration: none; padding: 11px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; border: 1px solid var(--line); transition: border-color 0.15s; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-family: var(--sans); }
+.btn-ghost:hover { border-color: var(--ink3); }
+.btn-green { background: var(--green); color: white; }
+
+/* CARDS */
+.cards-section { padding: 0 2rem 4rem; max-width: 1100px; margin: 0 auto; width: 100%; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.hub-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 1.5rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: box-shadow 0.15s, border-color 0.15s, transform 0.15s; }
+.hub-card:hover { box-shadow: var(--shadow); border-color: #C5BFB5; transform: translateY(-2px); }
+.card-icon { font-size: 24px; }
+.card-title { font-family: var(--serif); font-size: 17px; font-weight: 700; color: var(--ink); }
+.card-desc { font-size: 13px; color: var(--ink2); line-height: 1.55; flex: 1; }
+.card-tag { font-size: 11px; font-weight: 500; color: var(--accent); background: var(--accent-bg); padding: 2px 8px; border-radius: 20px; align-self: flex-start; }
+
+/* PAGE HEADER */
+.page-header { padding: 3rem 2rem 2rem; max-width: 1100px; margin: 0 auto; border-bottom: 1px solid var(--line); margin-bottom: 2rem; }
+.page-header h1 { font-family: var(--serif); font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 6px; }
+.page-header p { color: var(--ink2); font-size: 15px; }
+.page-content { max-width: 1100px; margin: 0 auto; padding: 0 2rem 4rem; }
+
+/* REPORT */
+.report-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.meta-badge { font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 20px; background: var(--green-bg); color: var(--green); }
+.meta-badge.amber { background: var(--amber-bg); color: var(--amber); }
+.report-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-bottom: 2.5rem; }
+.stat-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 1.25rem; }
+.stat-label { font-size: 12px; color: var(--ink3); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.stat-num { font-family: var(--serif); font-size: 40px; font-weight: 800; letter-spacing: -2px; color: var(--ink); line-height: 1; }
+.stat-note { font-size: 12px; color: var(--ink3); margin-top: 4px; }
+.report-section { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 1.5rem; margin-bottom: 1.25rem; }
+.report-section h2 { font-family: var(--serif); font-size: 18px; font-weight: 700; margin-bottom: 1rem; }
+.report-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.report-table th { text-align: left; font-size: 11px; font-weight: 600; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.05em; padding: 0 12px 8px 0; border-bottom: 1px solid var(--line); }
+.report-table td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); color: var(--ink2); vertical-align: top; }
+.report-table tr:last-child td { border-bottom: none; }
+.status-pill { font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 20px; display: inline-block; }
+.status-pill.done { background: var(--green-bg); color: var(--green); }
+.status-pill.progress { background: var(--accent-bg); color: var(--accent); }
+.status-pill.blocked { background: #FDE8E4; color: #7A1E10; }
+.status-pill.todo { background: var(--amber-bg); color: var(--amber); }
+.blockers-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.blocker-item { display: flex; gap: 10px; align-items: flex-start; }
+.blocker-dot { width: 8px; height: 8px; border-radius: 50%; background: #E24B4A; flex-shrink: 0; margin-top: 5px; }
+.blocker-text { font-size: 13px; color: var(--ink2); }
+.action-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.action-item { font-size: 13px; color: var(--ink2); display: flex; gap: 8px; align-items: flex-start; }
+.action-item::before { content: '→'; color: var(--accent); flex-shrink: 0; font-weight: 500; }
+
+/* WIKI */
+.wiki-grid { display: grid; grid-template-columns: 220px 1fr; gap: 2rem; }
+.wiki-nav { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 1rem; height: fit-content; position: sticky; top: 72px; }
+.wiki-nav-title { font-size: 11px; font-weight: 600; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; padding: 0 8px; }
+.wiki-nav a { display: block; padding: 7px 8px; font-size: 13px; color: var(--ink2); text-decoration: none; border-radius: 6px; transition: background 0.12s; }
+.wiki-nav a:hover, .wiki-nav a.active { background: var(--bg); color: var(--ink); }
+.wiki-section { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 1.75rem; margin-bottom: 1.25rem; }
+.wiki-section h2 { font-family: var(--serif); font-size: 20px; font-weight: 700; margin-bottom: 1rem; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.wiki-section h3 { font-size: 14px; font-weight: 500; color: var(--ink); margin: 1.25rem 0 6px; }
+.wiki-section p { font-size: 13px; color: var(--ink2); line-height: 1.7; margin-bottom: 10px; }
+.wiki-section ul { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.wiki-section ul li { font-size: 13px; color: var(--ink2); display: flex; gap: 8px; }
+.wiki-section ul li::before { content: '•'; color: var(--ink3); flex-shrink: 0; }
+.sop-steps { counter-reset: steps; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.sop-step { counter-increment: steps; display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--ink2); }
+.sop-step::before { content: counter(steps); background: var(--accent); color: white; font-size: 11px; font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+
+/* LINKS */
+.links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-bottom: 2rem; }
+.link-group-title { font-family: var(--serif); font-size: 15px; font-weight: 700; margin-bottom: 1rem; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.04em; font-size: 12px; grid-column: 1 / -1; margin-top: 1rem; }
+.link-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 1.25rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 6px; transition: box-shadow 0.15s, transform 0.12s; }
+.link-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.link-card-icon { font-size: 22px; }
+.link-card-title { font-size: 14px; font-weight: 500; color: var(--ink); }
+.link-card-desc { font-size: 12px; color: var(--ink3); }
+.link-card-url { font-size: 11px; color: var(--accent); margin-top: 4px; }
+
+/* AMA */
+.ama-form { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 1.5rem; margin-bottom: 2rem; }
+.ama-form h2 { font-family: var(--serif); font-size: 18px; font-weight: 700; margin-bottom: 1rem; }
+.form-row { margin-bottom: 12px; }
+.form-row label { display: block; font-size: 12px; font-weight: 500; color: var(--ink2); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em; }
+.form-row input, .form-row textarea, .form-row select { width: 100%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; font-family: var(--sans); font-size: 14px; color: var(--ink); background: var(--bg); outline: none; transition: border-color 0.15s; }
+.form-row input:focus, .form-row textarea:focus { border-color: var(--accent); }
+.form-row textarea { min-height: 80px; resize: vertical; }
+.qa-list { display: flex; flex-direction: column; gap: 14px; }
+.qa-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 1.5rem; }
+.qa-q { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 10px; display: flex; gap: 10px; }
+.qa-q::before { content: 'Q'; background: var(--amber-bg); color: var(--amber); font-size: 11px; font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.qa-a { font-size: 13px; color: var(--ink2); line-height: 1.7; display: flex; gap: 10px; }
+.qa-a::before { content: 'A'; background: var(--green-bg); color: var(--green); font-size: 11px; font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.qa-meta { font-size: 11px; color: var(--ink3); margin-top: 10px; }
+
+/* POWERED BY + FOOTER */
+.powered-by { text-align: center; padding: 2rem; color: var(--ink3); font-size: 13px; border-top: 1px solid var(--line); max-width: 1100px; margin: 0 auto; width: 100%; }
+.powered-by strong { color: var(--ink2); }
+.footer { background: var(--ink); color: rgba(255,255,255,0.4); text-align: center; padding: 1.25rem; font-size: 12px; margin-top: auto; }
+.footer a { color: rgba(255,255,255,0.5); }
+
+/* PROMPTS (reuse from library) */
+.prompt-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: center; }
+.search-wrap { position: relative; flex: 1; min-width: 200px; max-width: 300px; }
+.search-wrap svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; stroke: var(--ink3); fill: none; stroke-width: 2; pointer-events: none; }
+.search-wrap input { width: 100%; padding: 8px 12px 8px 32px; border: 1px solid var(--line); border-radius: 20px; font-family: var(--sans); font-size: 13px; color: var(--ink); background: var(--card); outline: none; }
+.search-wrap input:focus { border-color: var(--accent); }
+.chip { font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; border: 1px solid var(--line); background: var(--card); color: var(--ink2); cursor: pointer; transition: all 0.12s; }
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+.chip.active { background: var(--accent); color: white; border-color: var(--accent); }
+.prompt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.prompt-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 1.25rem; display: flex; flex-direction: column; gap: 10px; }
+.prompt-app { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.03em; text-transform: uppercase; display: inline-block; }
+.app-outlook { background: var(--accent-bg); color: var(--accent); }
+.app-teams { background: #F0EEFF; color: #2D1B8A; }
+.app-excel { background: var(--green-bg); color: var(--green); }
+.app-word { background: var(--accent-bg); color: #003580; }
+.app-powerpoint { background: #FDE8E4; color: #7A1E10; }
+.app-copilot { background: #E0F4F1; color: #0D4A42; }
+.prompt-title { font-size: 14px; font-weight: 500; color: var(--ink); }
+.prompt-box { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; font-size: 12px; color: var(--ink2); line-height: 1.65; font-family: 'Courier New', monospace; }
+.prompt-box .hl { color: var(--accent); font-weight: 600; }
+.prompt-footer { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.ptag { font-size: 11px; padding: 2px 8px; border-radius: 20px; background: var(--bg); color: var(--ink3); border: 1px solid var(--line); }
+.copy-btn { margin-top: 4px; width: 100%; padding: 7px; border: 1px solid var(--line); background: none; font-family: var(--sans); font-size: 12px; font-weight: 500; color: var(--ink2); border-radius: 6px; cursor: pointer; transition: all 0.12s; display: flex; align-items: center; justify-content: center; gap: 5px; }
+.copy-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.copy-btn.copied { background: var(--green-bg); color: var(--green); border-color: #A5D6A7; }
+
+/* EMAIL GENERATOR */
+.email-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 2rem; }
+.email-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 1.5rem; }
+.email-card h2 { font-family: var(--serif); font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+.email-card p { font-size: 13px; color: var(--ink2); margin-bottom: 1.25rem; }
+.eform { display: grid; gap: 10px; }
+.eform-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.eform label { font-size: 11px; font-weight: 600; color: var(--ink2); display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+.eform input, .eform select { width: 100%; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; font-family: var(--sans); font-size: 13px; color: var(--ink); background: var(--bg); outline: none; }
+.eform input:focus { border-color: var(--accent); }
+.eform-section { border-top: 1px solid var(--line); padding-top: 10px; font-size: 11px; font-weight: 600; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.06em; }
+
+@media (max-width: 700px) {
+  .hero h1 { font-size: 36px; }
+  .nav-links { display: none; }
+  .wiki-grid { grid-template-columns: 1fr; }
+  .eform-2col { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html"><span class="logo-pill">LA</span> Ops Hub</a>
+    <div class="nav-links">
+      <a href="report.html">Weekly report</a>
+      <a href="prompts.html">Prompt library</a>
+      <a href="wiki.html">Wiki</a>
+      <a href="links.html" class="active">Links</a>
+      <a href="ama.html">AMA</a>
+      <a href="blueprism.html">Blue Prism</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>Useful links</h1>
+  <p>Everything your team uses daily — in one place. Add new links by editing <code>data/links.json</code> on GitHub.</p>
+</div>
+
+<div class="page-content">
+  <div id="links-container"></div>
+</div>
+
+<footer class="footer">
+  <p>LA Ops Hub · Built by Ops team · <a href="https://github.com" target="_blank">Edit links on GitHub</a></p>
+</footer>
+
+<script>
+const links = {
+  "Microsoft 365": [
+    { icon: "📧", title: "Outlook Web", desc: "Email and calendar", url: "https://outlook.office.com" },
+    { icon: "💬", title: "Microsoft Teams", desc: "Chat, meetings, and channels", url: "https://teams.microsoft.com" },
+    { icon: "✨", title: "Microsoft Copilot", desc: "AI assistant for M365", url: "https://copilot.microsoft.com" },
+    { icon: "📁", title: "SharePoint home", desc: "Document management and sites", url: "https://sharepoint.com" },
+    { icon: "📊", title: "Excel Online", desc: "Spreadsheets in the browser", url: "https://office.com/launch/excel" },
+    { icon: "📝", title: "Word Online", desc: "Documents in the browser", url: "https://office.com/launch/word" }
+  ],
+  "Project tools": [
+    { icon: "🎯", title: "JIRA board", desc: "Project tracking and tickets", url: "https://jira.atlassian.com" },
+    { icon: "📋", title: "Team backlog", desc: "Sprint planning and backlog", url: "https://jira.atlassian.com" },
+    { icon: "📈", title: "JIRA reports", desc: "Velocity, burndown, sprint reports", url: "https://jira.atlassian.com" }
+  ],
+  "SharePoint sites": [
+    { icon: "⚙️", title: "Ops team site", desc: "Main operations documents and SOPs", url: "https://sharepoint.com" },
+    { icon: "👥", title: "HR site", desc: "Policies, forms, and HR documents", url: "https://sharepoint.com" },
+    { icon: "💰", title: "Finance site", desc: "Budget reports and financial docs", url: "https://sharepoint.com" },
+    { icon: "💻", title: "IT site", desc: "Tech requests, guides, and IT docs", url: "https://sharepoint.com" }
+  ],
+  "This platform": [
+    { icon: "📊", title: "Weekly report", desc: "Auto-generated ops summary", url: "report.html" },
+    { icon: "✨", title: "Prompt library", desc: "Best MS Copilot prompts", url: "prompts.html" },
+    { icon: "✉️", title: "Email generator", desc: "Project kickoff and feedback emails", url: "emails.html" },
+    { icon: "📚", title: "Wiki & SOPs", desc: "Standard operating procedures", url: "wiki.html" },
+    { icon: "❓", title: "AMA", desc: "Ask the team anything", url: "ama.html" }
+  ]
+};
+
+const container = document.getElementById('links-container');
+Object.entries(links).forEach(([group, items]) => {
+  container.innerHTML += `<div class="link-group-title">${group}</div>
+  <div class="links-grid">
+    ${items.map(l => `
+      <a class="link-card" href="${l.url}" ${l.url.startsWith('http') ? 'target="_blank" rel="noopener"' : ''}>
+        <div class="link-card-icon">${l.icon}</div>
+        <div class="link-card-title">${l.title}</div>
+        <div class="link-card-desc">${l.desc}</div>
+        ${l.url.startsWith('http') ? `<div class="link-card-url">${l.url.replace('https://','')}</div>` : ''}
+      </a>`).join('')}
+  </div>`;
+});
+</script>
+</body>
+</html>
